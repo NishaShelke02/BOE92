@@ -1,0 +1,211 @@
+/* ===========================
+   HEADER
+=========================== */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  transition: all 0.4s ease;
+}
+
+.header.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* ===========================
+   NAVBAR
+=========================== */
+
+.navbar {
+  max-width: 1400px;
+  margin: auto;
+  padding: 18px 40px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  transition: all 0.3s ease;
+}
+
+.header.scrolled .navbar {
+  padding: 12px 40px;
+}
+
+.logo img {
+  object-fit: contain;
+}
+
+/* ===========================
+   MENU
+=========================== */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: #f4a900;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 700;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+}
+
+/* ===========================
+   DROPDOWN
+=========================== */
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-btn {
+  background: transparent;
+  border: none;
+  color: #f4a900;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 40px;
+  left: 0;
+
+  min-width: 280px;
+
+  background: white;
+  border-radius: 12px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+
+  transition: all 0.3s ease;
+}
+
+.show-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu li {
+  list-style: none;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 14px 18px;
+  color: #333;
+  font-size: 15px;
+}
+
+.dropdown-menu a:hover {
+  background: #f5f5f5;
+  color: #4caf50;
+}
+
+/* ===========================
+   BROCHURE BUTTON
+=========================== */
+
+.brochure-btn {
+  background: #43a047;
+  color: white;
+  text-decoration: none;
+
+  padding: 14px 34px;
+  border-radius: 40px;
+
+  font-weight: 700;
+  transition: 0.3s;
+}
+
+.brochure-btn:hover {
+  background: #2e7d32;
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+.mobile-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+@media (max-width: 992px) {
+
+  .mobile-btn {
+    display: block;
+  }
+
+  .brochure-btn {
+    display: none;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 80px;
+    left: -100%;
+
+    width: 100%;
+    height: calc(100vh - 80px);
+
+    background: #111;
+
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 30px;
+
+    transition: 0.4s;
+  }
+
+  .nav-links.active {
+    left: 0;
+  }
+
+  .dropdown-menu {
+    position: static;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .dropdown-btn {
+    color: white;
+  }
+
+  .nav-links a {
+    color: white;
+  }
+
+  .navbar {
+    padding: 15px 20px;
+  }
+}

@@ -1,0 +1,251 @@
+/* --- Eco-Modern Animated Footer --- */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.footer {
+  /* Deep Organic Green Gradient */
+  background: linear-gradient(135deg, #1B5E20 0%, #2E7D32 100%);
+  color: #E8F5E8;
+  padding: 60px 0 0;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Subtle Organic Animation Background */
+.footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at 30% 70%, rgba(76, 175, 80, 0.2) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 30%, rgba(255, 140, 0, 0.1) 0%, transparent 50%),
+    linear-gradient(45deg, transparent 30%, rgba(240, 248, 240, 0.03) 50%, transparent 70%);
+  animation: waveBreathe 8s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+@keyframes waveBreathe {
+  from { opacity: 0.6; transform: scale(1) translateY(0); }
+  to { opacity: 1; transform: scale(1.02) translateY(-5px); }
+}
+
+/* Main Container */
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Sections */
+.footer-section h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.footer-section h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #C8E6C9; /* Light Green */
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+/* Underline Effect */
+.footer-section h3::after,
+.footer-section h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, #4CAF50, #FF8C00);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.footer-section:hover h3::after,
+.footer-section:hover h4::after {
+  width: 80px;
+}
+
+.footer-section p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #C8E6C9;
+}
+
+/* Links List */
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links li a {
+  color: #E8F5E8;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 5px 0;
+  display: inline-block;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+/* Shiny Hover Effect */
+.footer-links a::before {
+  content: '';
+  position: absolute;
+  left: -100%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 140, 0, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.footer-links a:hover::before {
+  left: 100%;
+}
+
+.footer-links a:hover {
+  color: #FF8C00;
+  transform: translateX(10px);
+  padding-left: 10px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+/* Contact Info & Icons */
+.footer-section a {
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+  color: #FF8C00;
+}
+
+/* Email Links - Keep White */
+.footer a[href^="mailto:"] {
+  color: #ffffff !important;
+}
+
+.footer a[href^="mailto:"]:hover {
+  color: #ffffff !important;
+}
+
+/* WhatsApp Specific Style */
+.whatsapp-link {
+  color: #E8F5E8 !important;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(37, 211, 102, 0.15);
+  padding: 8px 15px;
+  border-radius: 8px;
+  border: 1px solid rgba(37, 211, 102, 0.3);
+  margin-top: 5px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.whatsapp-link:hover {
+  color: #25D366 !important;
+  background: rgba(37, 211, 102, 0.25);
+  transform: scale(1.02);
+}
+
+/* Bottom Footer */
+.footer-bottom {
+  background: rgba(21, 26, 17, 0.95);
+  border-top: 1px solid rgba(76, 175, 80, 0.3);
+  padding: 20px 0;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-bottom p {
+  font-size: 0.9rem;
+  color: #888;
+  margin: 0;
+}
+
+.footer-bottom-links {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.footer-bottom-links a {
+  color: #E8F5E8;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.footer-bottom-links a:hover {
+  color: #FF8C00;
+  background: rgba(76, 175, 80, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .footer-section h3::after,
+  .footer-section h4::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .footer-bottom-links {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .footer-links a:hover {
+    transform: none;
+    padding-left: 5px;
+  }
+}
