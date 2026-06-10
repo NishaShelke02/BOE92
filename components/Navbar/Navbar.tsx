@@ -19,9 +19,7 @@ export default function Navbar() {
 
     window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -32,14 +30,14 @@ export default function Navbar() {
         <Link href="/" className="logo">
           <Image
             src="/logo.png"
-            alt="BOE9"
+            alt="Logo"
             width={170}
             height={90}
             priority
           />
         </Link>
 
-        {/* Mobile Menu Icon */}
+        {/* Mobile Menu Button */}
         <button
           className="mobile-btn"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -61,15 +59,28 @@ export default function Navbar() {
           {/* Products Dropdown */}
           <li
             className="dropdown"
-            onMouseEnter={() => setProductOpen(true)}
-            onMouseLeave={() => setProductOpen(false)}
+            onMouseEnter={() => {
+              if (!menuOpen) setProductOpen(true);
+            }}
+            onMouseLeave={() => {
+              if (!menuOpen) setProductOpen(false);
+            }}
           >
             <button
               className="dropdown-btn"
-              onClick={() => setProductOpen(!productOpen)}
+              type="button"
+              onClick={() => {
+                if (menuOpen) {
+                  setProductOpen(!productOpen);
+                }
+              }}
             >
               PRODUCTS
-              <FaChevronDown size={12} />
+
+              <FaChevronDown
+                size={12}
+                className={productOpen ? "rotate-icon" : ""}
+              />
             </button>
 
             <ul
@@ -97,7 +108,7 @@ export default function Navbar() {
 
               <li>
                 <Link href="/products/dehydrated-products">
-                  Dehydrated Products
+                  Dehydrated Products & Powders
                 </Link>
               </li>
 
@@ -140,7 +151,7 @@ export default function Navbar() {
         </ul>
 
         {/* Brochure Button */}
-        <Link href="/brochure.pdf" className="brochure-btn">
+        <Link href="/BOE9 1.pdf" className="brochure-btn">
           BROCHURE
         </Link>
 

@@ -11,9 +11,15 @@
 }
 
 /* --- Global --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .home {
   width: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .container {
@@ -24,7 +30,7 @@
 
 .section-title {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
   color: var(--secondary-green);
   margin-bottom: 15px;
   text-transform: capitalize;
@@ -35,7 +41,7 @@
 .hero-slider {
   position: relative;
   width: 100%;
-  height: 700px; /* Adjust based on preference */
+  height: clamp(320px, 60vw, 700px);
   background-color: #eee;
   overflow: hidden;
 }
@@ -75,24 +81,25 @@
 }
 
 .slide-title {
-  font-size: 3rem;
+  font-size: clamp(1.4rem, 4vw, 3rem);
   font-weight: 800;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
   line-height: 1.2;
 }
 
 .slide-description {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  margin-bottom: 24px;
   line-height: 1.6;
 }
 
 .cta-button {
-  padding: 15px 40px;
+  display: inline-block;
+  padding: 12px 28px;
   background-color: var(--primary-green);
   color: white;
   border: 2px solid var(--primary-green);
-  font-size: 1rem;
+  font-size: clamp(0.85rem, 2vw, 1rem);
   font-weight: 600;
   text-transform: uppercase;
   cursor: pointer;
@@ -112,9 +119,9 @@
   background-color: rgba(255, 255, 255, 0.2);
   color: white;
   border: none;
-  font-size: 3rem;
-  width: 50px;
-  height: 50px;
+  font-size: 2rem;
+  width: 44px;
+  height: 52px;
   cursor: pointer;
   z-index: 10;
   display: flex;
@@ -128,26 +135,26 @@
 }
 
 .prev-arrow {
-  left: 20px;
+  left: 12px;
 }
 
 .next-arrow {
-  right: 20px;
+  right: 12px;
 }
 
 .slider-dots {
   position: absolute;
-  bottom: 30px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 10px;
+  gap: 8px;
   z-index: 10;
 }
 
 .dot {
-  width: 15px;
-  height: 15px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.5);
   border: none;
@@ -159,8 +166,10 @@
   background-color: var(--primary-green);
   transform: scale(1.2);
 }
+
+/* --- ABOUT --- */
 .about-section {
-  padding: 70px 0;
+  padding: clamp(40px, 6vw, 70px) 0;
   background: #f5f7f2;
 }
 
@@ -173,7 +182,7 @@
 
 .about-image {
   width: 100%;
-  height: 500px; /* Fixed image height */
+  height: clamp(240px, 35vw, 500px);
   object-fit: cover;
   border-radius: 12px;
   border: 2px solid #d89a10;
@@ -183,71 +192,52 @@
   display: inline-block;
   background: #dde2d7;
   color: #355c3a;
-  padding: 10px 20px;
+  padding: 8px 18px;
   border-radius: 50px;
   font-size: 13px;
   font-weight: 600;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
 .about-content h2 {
-  font-size: 52px; /* Reduced from 72px */
+  font-size: clamp(2rem, 5vw, 52px);
   line-height: 1.1;
   color: #355c3a;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .about-content p {
-  font-size: 18px; /* Reduced from 22px */
+  font-size: clamp(15px, 2vw, 18px);
   line-height: 1.7;
   color: #66756b;
-  margin-bottom: 15px;
+  margin-bottom: 14px;
 }
 
 .about-btn {
   margin-top: 10px;
-  padding: 14px 32px;
+  padding: 13px 28px;
   border: none;
   border-radius: 50px;
   background: linear-gradient(90deg, #2d8f00, #58b000);
   color: white;
-  font-size: 16px;
+  font-size: clamp(14px, 2vw, 16px);
   font-weight: 600;
   cursor: pointer;
 }
 
-@media (max-width: 992px) {
-  .about-wrapper {
-    grid-template-columns: 1fr;
-  }
-
-  .about-image {
-    height: 350px;
-  }
-
-  .about-content h2 {
-    font-size: 38px;
-  }
-
-  .about-content p {
-    font-size: 16px;
-  }
-}
-
 /* --- PRODUCTS PREVIEW --- */
 .products-preview {
-  padding: 80px 0;
+  padding: clamp(40px, 6vw, 80px) 0;
   background-color: var(--section-bg);
 }
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  margin-bottom: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin-bottom: 36px;
 }
 
-/* Product Card */
 .product-card {
   background: white;
   border: 1px solid #e0e0e0;
@@ -266,11 +256,11 @@
 
 .product-image-container {
   width: 100%;
-  height: 200px;
+  height: 180px;
   position: relative;
   overflow: hidden;
   border-radius: 6px;
-  margin-bottom: 15px;
+  margin-bottom: 14px;
   background-color: #f5f5f5;
 }
 
@@ -282,14 +272,14 @@
 
 .product-card h3 {
   color: var(--secondary-green);
-  font-size: 1.2rem;
-  margin-bottom: 10px;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
 }
 
 .product-card p {
   color: #666;
-  font-size: 0.9rem;
-  margin-bottom: 20px;
+  font-size: 0.88rem;
+  margin-bottom: 16px;
   line-height: 1.5;
 }
 
@@ -317,7 +307,7 @@
   background-color: var(--earthy-brown);
   color: white;
   border: none;
-  padding: 15px 40px;
+  padding: 14px 36px;
   font-size: 1rem;
   font-weight: 600;
   border-radius: 4px;
@@ -330,10 +320,9 @@
   transform: scale(1.02);
 }
 
-/* ================= WHY US ================= */
-
+/* --- WHY US --- */
 .why-us-section {
-  padding: 60px 0;
+  padding: clamp(40px, 6vw, 60px) 0;
   background: url("/images/grass-bg.jpg") center/cover no-repeat;
   position: relative;
 }
@@ -354,8 +343,8 @@
 .why-title {
   text-align: center;
   color: #ffffff;
-  font-size: 2.5rem;
-  margin-bottom: 40px;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  margin-bottom: 36px;
   font-weight: 700;
 }
 
@@ -369,7 +358,7 @@
   position: relative;
   padding: 25px;
   border-radius: 12px;
-  min-height: 200px;
+  min-height: 180px;
   transition: 0.3s ease;
 }
 
@@ -388,47 +377,27 @@
 .why-number {
   position: absolute;
   top: 15px;
-  right: 20px;
+  right: 18px;
   color: #fff;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 700;
 }
 
 .why-icon {
-  font-size: 3rem;
-  margin-bottom: 15px;
+  font-size: 2.6rem;
+  margin-bottom: 12px;
 }
 
 .why-card h3 {
   color: #fff;
-  font-size: 1.6rem;
-  margin-bottom: 10px;
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  margin-bottom: 8px;
 }
 
 .why-card p {
   color: #f5f5f5;
-  font-size: 1rem;
+  font-size: clamp(0.88rem, 1.8vw, 1rem);
   line-height: 1.6;
-}
-
-@media (max-width: 992px) {
-  .why-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .why-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .why-title {
-    font-size: 2rem;
-  }
-
-  .why-card {
-    min-height: auto;
-  }
 }
 
 /* --- Animations --- */
@@ -443,27 +412,216 @@
   }
 }
 
-/* --- Responsive --- */
+/* =============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================= */
+
+/* --- Tablet landscape (max 1024px) --- */
+@media (max-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* --- Tablet portrait (max 992px) --- */
+@media (max-width: 992px) {
+  .about-wrapper {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .about-image {
+    height: 320px;
+    width: 100%;
+  }
+
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* --- Mobile large (max 768px) --- */
 @media (max-width: 768px) {
+  .container {
+    padding: 0 4%;
+  }
+
+  /* Hero */
+  .hero-slider {
+    height: 650px;
+  }
+
+  .slide-title {
+    font-size: 1.8rem;
+  }
+
+  .slide-description {
+    font-size: 1.0rem;
+    margin-bottom: 16px;
+    /* Limit lines on small screens */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .cta-button {
+    padding: 10px 22px;
+    font-size: 0.85rem;
+  }
+
+  .slider-arrow {
+    width: 36px;
+    height: 42px;
+    font-size: 1.5rem;
+  }
+
+  .prev-arrow { left: 8px; }
+  .next-arrow { right: 8px; }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  /* About */
+  .about-section {
+    padding: 36px 0;
+  }
+
+  .about-wrapper {
+    gap: 20px;
+  }
+
+  .about-image {
+    height: 240px;
+    width: auto;
+  }
+
+  .about-content h2 {
+    font-size: 1.8rem;
+  }
+
+  /* Products */
+  .products-preview {
+    padding: 40px 0;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .product-image-container {
+    height: 150px;
+  }
+
+  .view-all-btn {
+    padding: 12px 28px;
+    font-size: 0.95rem;
+  }
+
+  /* Why Us */
+  .why-us-section {
+    padding: 36px 0;
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .why-title {
+    font-size: 1.6rem;
+    margin-bottom: 24px;
+  }
+
+  .why-card {
+    min-height: auto;
+    padding: 20px;
+  }
+
+  /* Features */
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Mobile small (max 480px) --- */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  /* Hero: stack text + hide description on very small screens */
   .hero-slider {
     height: 500px;
   }
 
+  .slide-content {
+    padding: 0 16px;
+    max-width: 100%;
+  }
+
   .slide-title {
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+  }
+
+  .slide-description {
+    display: none; /* Hide on tiny screens to keep hero clean */
+  }
+
+  .cta-button {
+    padding: 9px 18px;
+    font-size: 0.8rem;
+  }
+
+  /* Products: single column on very small screens */
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .product-image-container {
+    height: 180px;
+  }
+
+  /* About */
+  .about-image {
+    height: 200px;
+  }
+
+  .about-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .about-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Why Us */
+  .why-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .why-icon {
     font-size: 2rem;
   }
 
-  .slider-arrow {
-    width: 40px;
-    height: 40px;
-    font-size: 2rem;
+  /* View All button full-width */
+  .view-all-btn {
+    width: 100%;
+    padding: 13px 20px;
   }
 
+  /* Section title */
   .section-title {
-    font-size: 2rem;
-  }
-  
-  .features-grid {
-      grid-template-columns: 1fr;
+    font-size: 1.4rem;
   }
 }
