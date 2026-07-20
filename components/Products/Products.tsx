@@ -561,7 +561,7 @@ console.log("data:", data);
         </div>
 
         <Link
-          href="/ContactUs"
+          href="/contact"
           className="contact-btn"
         >
           Send Inquiry →

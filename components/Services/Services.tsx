@@ -298,7 +298,7 @@ const Services = () => {
     <div className="cta-buttons">
 
       <Link
-        href="/ContactUs"
+        href="/contact"
         className="cta-button primary"
         aria-label="Contact BOE9 Export Import to start sourcing from India"
       >

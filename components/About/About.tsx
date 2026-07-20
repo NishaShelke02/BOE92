@@ -289,7 +289,7 @@ const AboutUs = () => {
               </Link>
 
               <Link
-                href="/ContactUs"
+                href="/contact"
                 className="cta-button secondary"
                 aria-label="Contact BOE9 Export Import for sourcing and export inquiries"
               >

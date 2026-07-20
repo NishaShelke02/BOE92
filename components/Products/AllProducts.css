@@ -1,0 +1,217 @@
+/* ==========================================================================
+   All Products — Organic Theme with 3D Effects
+   ========================================================================== */
+
+:root {
+  --organic-bg: #f7f3ea;
+  --organic-bg-alt: #eef1e6;
+  --organic-primary: #6b8f4e;
+  --organic-primary-dark: #4d6b37;
+  --organic-accent: #d98c4a;
+  --organic-text: #2f2b23;
+  --organic-text-muted: #6f6a5e;
+  --organic-card-bg: #ffffff;
+  --organic-shadow-soft: rgba(76, 92, 56, 0.15);
+  --organic-shadow-strong: rgba(76, 92, 56, 0.35);
+  --organic-border: #e2ddca;
+}
+
+.all-products-page {
+  background: radial-gradient(circle at 20% 10%, var(--organic-bg-alt), var(--organic-bg) 60%);
+  padding: 100px 24px 80px;
+  min-height: 100vh;
+  perspective: 1200px;
+}
+
+.all-products-page h1 {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 2.4rem;
+  color: var(--organic-primary-dark);
+  text-align: center;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.all-products-page h1::after {
+  content: "";
+  display: block;
+  width: 90px;
+  height: 14px;
+  margin: 14px auto 40px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--organic-primary), var(--organic-accent));
+  box-shadow: 0 3px 6px var(--organic-shadow-soft);
+}
+
+/* ---------------------------------------------------------------------
+   Grid
+   --------------------------------------------------------------------- */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 32px;
+  max-width: 1280px;
+  margin: 0 auto;
+  transform-style: preserve-3d;
+}
+
+/* ---------------------------------------------------------------------
+   Product Card — organic blob shape + 3D tilt/lift on hover
+   --------------------------------------------------------------------- */
+
+.product-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--organic-card-bg);
+  border: 1px solid var(--organic-border);
+  border-radius: 32px 18px 32px 18px; /* asymmetric organic curve */
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  isolation: isolate;
+
+  box-shadow:
+    0 2px 4px var(--organic-shadow-soft),
+    0 10px 20px -12px var(--organic-shadow-soft);
+
+  transform: translateZ(0) rotateX(0deg) rotateY(0deg) scale(1);
+  transform-style: preserve-3d;
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease;
+}
+
+/* leafy organic glow behind the card */
+.product-card::before {
+  content: "";
+  position: absolute;
+  inset: -40% -40% auto auto;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, var(--organic-primary) 0%, transparent 70%);
+  opacity: 0;
+  filter: blur(10px);
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.product-card:hover,
+.product-card:focus-visible {
+  transform: translateY(-10px) translateZ(30px) rotateX(4deg) rotateY(-3deg) scale(1.02);
+  border-color: var(--organic-primary);
+  box-shadow:
+    0 8px 16px var(--organic-shadow-soft),
+    0 28px 40px -18px var(--organic-shadow-strong);
+}
+
+.product-card:hover::before {
+  opacity: 0.25;
+}
+
+.product-card:active {
+  transform: translateY(-4px) translateZ(10px) scale(0.99);
+  transition-duration: 0.15s;
+}
+
+/* ---------------------------------------------------------------------
+   Thumbnail
+   --------------------------------------------------------------------- */
+
+.product-thumb {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--organic-bg-alt);
+  border-radius: 26px 14px 0 0;
+  transition: transform 0.6s ease, filter 0.6s ease;
+  transform: scale(1.001) translateZ(20px);
+}
+
+.product-card:hover .product-thumb {
+  transform: scale(1.06) translateZ(40px);
+  filter: saturate(1.15) brightness(1.03);
+}
+
+/* soft vignette overlay for depth */
+.product-thumb::after {
+  content: "";
+}
+
+/* ---------------------------------------------------------------------
+   Info block
+   --------------------------------------------------------------------- */
+
+.product-info {
+  padding: 18px 20px 22px;
+  background: linear-gradient(180deg, var(--organic-card-bg), var(--organic-bg-alt));
+  transform: translateZ(15px);
+}
+
+.product-info h3 {
+  margin: 0 0 6px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--organic-text);
+  transition: color 0.3s ease;
+}
+
+.product-card:hover .product-info h3 {
+  color: var(--organic-primary-dark);
+}
+
+.product-info p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  color: var(--organic-text-muted);
+}
+
+/* small accent leaf/dot before the title, echoing the organic theme */
+.product-info h3::before {
+  content: "\1F343"; /* 🍃 */
+  display: inline-block;
+  margin-right: 6px;
+  font-size: 0.85em;
+  opacity: 0;
+  transform: translateY(2px) scale(0.6);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.product-card:hover .product-info h3::before {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ---------------------------------------------------------------------
+   Loading state
+   --------------------------------------------------------------------- */
+
+.all-products-page h1:only-child {
+  color: var(--organic-text-muted);
+  font-style: italic;
+}
+
+/* ---------------------------------------------------------------------
+   Responsive tweaks
+   --------------------------------------------------------------------- */
+
+@media (max-width: 640px) {
+  .all-products-page {
+    padding: 32px 16px 60px;
+    perspective: none;
+  }
+
+  .product-card:hover,
+  .product-card:focus-visible {
+    transform: translateY(-6px) scale(1.01);
+  }
+
+  .product-grid {
+    gap: 20px;
+  }
+}
